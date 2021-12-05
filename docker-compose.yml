@@ -1,0 +1,78 @@
+# Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
+version: '3'
+
+#Define services
+services:
+
+  #Back-end Spring Boot Application
+  assessmentbe:
+    #The docker file in scrum-app build the jar and provides the docker image with the following name.
+    build: ./assessmentBE
+    container_name: assessmentbe
+
+    ports:
+      - 8888:8888 # Forward the exposed port 8888 on the container to port 8888 on the host machine
+    links:
+      - keycloak
+    networks:
+      - auth-network
+
+  #Fron-end Angular Application
+  assesmentfe:
+    build: ./MamunTask
+    container_name: assessmentfe
+    ports:
+      - 4200:80
+    links:
+      - assessmentbe
+
+
+  postgres:
+    container_name: postgres
+    image: 'postgres'
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: keycloak
+    ports:
+      - "5432:5432"
+    networks:
+      - auth-network
+
+  keycloak:
+    container_name: keycloak
+    image: jboss/keycloak
+    command:
+      [
+        '-b',
+        '0.0.0.0',
+        '-Dkeycloak.migration.action=import',
+        '-Dkeycloak.migration.provider=dir',
+        '-Dkeycloak.migration.dir=/opt/jboss/keycloak/realm-config',
+        '-Dkeycloak.migration.strategy=OVERWRITE_EXISTING',
+      ]
+    volumes:
+        - ./asssmentBE/realm-config:/opt/jboss/keycloak/realm-config
+    ports:
+      - "8050:8080"
+    depends_on:
+      - postgres
+    environment:
+      DB_VENDOR: "POSTGRES"
+      DB_ADDR: postgres
+      DB_PORT: 5432
+      DB_USER: keycloak
+      DB_PASSWORD: keycloak
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: password
+    restart: always
+    networks:
+      - auth-network
+
+networks:
+  auth-network:
+    driver: bridge
+
+#Volumes for DB data
+volumes:
+  mammunassessment:
