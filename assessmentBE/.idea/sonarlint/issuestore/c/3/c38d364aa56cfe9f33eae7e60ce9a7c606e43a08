@@ -1,0 +1,23 @@
+
+=
+java:S1125R"'Remove the unnecessary boolean literal.(Û«‡
+=
+java:S1125Y"'Remove the unnecessary boolean literal.(Æó»
+R
+java:S1854y"7Remove this useless assignment to local variable "uri".(İè…„ÿÿÿÿÿ
+C
+java:S1481y"(Remove this unused "uri" local variable.(İè…„ÿÿÿÿÿ
+]	java:S899"BDo something with the "boolean" value returned by "createNewFile".(Ğ’Íùÿÿÿÿ
+N
+java:S1135“"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ
+^
+java:S1128"CRemove this unused import 'org.springframework.util.ResourceUtils'.(Š’Ğ¦úÿÿÿÿ
+?
+java:S1128")Remove this unused import 'java.net.URI'.(Ö¦¨°
+S
+java:S1128"8Remove this unused import 'java.net.URISyntaxException'.(Ä®íÿÿÿÿÿ
+E
+java:S1128"/Remove this unused import 'java.nio.file.Path'.(×²êÂ
+F
+java:S1128"0Remove this unused import 'java.nio.file.Paths'.(áè°¯
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(’Ğ¸ı

@@ -1,0 +1,26 @@
+body {
+    background-color: #3c0174;
+    }/* You can add global styles to this file, and also import other style files */
+    .p-breadcrumb ul li .p-menuitem-link .p-menuitem-text {
+        color: #e2dfe5 !important;
+    }
+    .p-breadcrumb {
+        background: transparent !important; 
+    border: 0ch !important;
+    }
+    
+    .p-breadcrumb ul li .p-menuitem-link .p-menuitem-text {
+        color: #ffffff !important;
+    }
+    .p-card {
+        background: transparent !important;
+        color: white !important;
+        box-shadow: unset !important;
+    }
+
+    .formdiv{
+        margin: 10px!important;
+    }
+    .p-button {
+        background: #3c0174 !important;
+    }
